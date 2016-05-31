@@ -1,0 +1,4 @@
+name = Hallo
+description = This is Hallo Pre Test Commit.
+core = 7.x
+package = Hallo.

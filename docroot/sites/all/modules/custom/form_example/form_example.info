@@ -1,0 +1,3 @@
+name = "Form Example Module"
+core = "7.x"
+description = "An example module used to learn module development and forms creation."

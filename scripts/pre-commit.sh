@@ -80,6 +80,7 @@ do
 
     # PHP LINT syntax checks.
     php -l "$STAGED/$FILE" >>$LINTLOG 2>&1
+    echo "$STAGED/$FILE"
     if [ $? -eq 255 ]; then
       ERROR_FILES="$ERROR_FILES $FILE"
     fi

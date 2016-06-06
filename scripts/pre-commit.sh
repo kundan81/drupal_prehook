@@ -65,7 +65,7 @@ do
     # By initially matching against code which has been stripped of
     # comments, we can reliably eliminate any files which include only
     # commented calls to debug functions.
-    php -r "exit(preg_match('/$PATTERN/', php_strip_whitespace('$STAGED/$FILE')));"
+    # php -r "exit(preg_match('/$PATTERN/', php_strip_whitespace('$STAGED/$FILE')));"
     if [ $? -ne 0 ]; then
       # The output of php_strip_whitespace() is of no use for display
       # purposes, so we still need to grep the files; but we can at least
@@ -77,16 +77,17 @@ do
       echo "---------------------------------------"
       EXIT=$ABORT_COMMIT # but still run the remaining tests
     fi
-    phpcs <standard> = Drupal "$FILE" >>$LINTLOG 2>&1
-    if [ $? -gt 0 ]; then
-      ERROR_FILES="$ERROR_FILES $FILE"
-    fi
+
     # PHP LINT syntax checks.
     php -l "$STAGED/$FILE" >>$LINTLOG 2>&1
     if [ $? -eq 255 ]; then
       ERROR_FILES="$ERROR_FILES $FILE"
     fi
-
+    phpcbf --standard=Drupal "$STAGED/$FILE" >>$LINTLOG 2>&1
+    phpcs --standard=Drupal "$STAGED/$FILE" >>$LINTLOG 2>&1
+    if [ $? -ne 0 ]; then
+      ERROR_FILES="$ERROR_FILES $FILE"
+    fi
     rm -f "$STAGED/$FILE"
   fi
 done

@@ -77,16 +77,16 @@ do
       echo "---------------------------------------"
       EXIT=$ABORT_COMMIT # but still run the remaining tests
     fi
-
+    phpcs --standard = Drupal "$FILE" >>$LINTLOG 2>&1
+    if [ $? -gt 0 ]; then
+      ERROR_FILES="$ERROR_FILES $FILE"
+    fi
     # PHP LINT syntax checks.
     php -l "$STAGED/$FILE" >>$LINTLOG 2>&1
     if [ $? -eq 255 ]; then
       ERROR_FILES="$ERROR_FILES $FILE"
     fi
-    phpcs --standard = Drupal "$FILE" >>$LINTLOG 2>&1
-    if [ $? -eq 255 ]; then
-      ERROR_FILES="$ERROR_FILES $FILE"
-    fi
+
     rm -f "$STAGED/$FILE"
   fi
 done

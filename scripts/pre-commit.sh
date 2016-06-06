@@ -89,7 +89,7 @@ do
       ERROR_FILES="$ERROR_FILES $FILE"
     fi
     phpcbf --standard=Drupal "$STAGED/$FILE"
-    #rm -f "$STAGED/$FILE"
+    rm -f "$STAGED/$FILE"
   fi
 done
 

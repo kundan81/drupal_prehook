@@ -83,7 +83,10 @@ do
     if [ $? -eq 255 ]; then
       ERROR_FILES="$ERROR_FILES $FILE"
     fi
-    echo "$STAGED/$FILE"
+    phpcs --standard = Drupal "$STAGED/$FILE" >>$LINTLOG 2>&1
+    if [ $? -eq 255 ]; then
+      ERROR_FILES="$ERROR_FILES $FILE"
+    fi
     rm -f "$STAGED/$FILE"
   fi
 done

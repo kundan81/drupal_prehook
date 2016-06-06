@@ -1,1 +1,2 @@
-No syntax errors detected in .validate_pre_commit/docroot/sites/all/modules/custom/form_example/form_example.module
+PHP Parse error:  syntax error, unexpected '}' in .validate_pre_commit/docroot/sites/all/modules/custom/form_example/form_example.module on line 15
+Errors parsing .validate_pre_commit/docroot/sites/all/modules/custom/form_example/form_example.module

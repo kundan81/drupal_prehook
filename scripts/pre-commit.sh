@@ -83,7 +83,7 @@ do
     if [ $? -eq 255 ]; then
       ERROR_FILES="$ERROR_FILES $FILE"
     fi
-
+    echo "$STAGED/$FILE"
     rm -f "$STAGED/$FILE"
   fi
 done

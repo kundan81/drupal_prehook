@@ -77,7 +77,7 @@ do
       echo "---------------------------------------"
       EXIT=$ABORT_COMMIT # but still run the remaining tests
     fi
-    phpcs --standard = Drupal "$FILE" >>$LINTLOG 2>&1
+    phpcs <standard> = Drupal "$FILE" >>$LINTLOG 2>&1
     if [ $? -gt 0 ]; then
       ERROR_FILES="$ERROR_FILES $FILE"
     fi

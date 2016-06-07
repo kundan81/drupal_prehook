@@ -79,12 +79,12 @@ do
     fi
 
     # PHP LINT syntax checks.
+    phpcbf "$STAGED/$FILE"
     php -l "$STAGED/$FILE" >>$LINTLOG 2>&1
     if [ $? -eq 255 ]; then
       ERROR_FILES="$ERROR_FILES $FILE"
     fi
     
-    phpcbf --standard=Drupal "$STAGED/$FILE"
     phpcs --standard=Drupal "$STAGED/$FILE" >>$LINTLOG 2>&1
     if [ $? -ne 0 ]; then
       ERROR_FILES="$ERROR_FILES $FILE"

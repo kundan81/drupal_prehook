@@ -88,9 +88,9 @@ do
     if [ $? -ne 0 ]; then
       ERROR_FILES="$ERROR_FILES $FILE"
     fi
+    phpcbf --standard=Drupal "$STAGED/$FILE"
     rm -f "$STAGED/$FILE"
   fi
-  phpcbf --standard=Drupal "$STAGED/$FILE"
 done
 
 # Javascript code checks.

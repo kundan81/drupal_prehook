@@ -84,7 +84,7 @@ do
       ERROR_FILES="$ERROR_FILES $FILE"
     fi
     phpcbf --standard=Drupal "$FILE" 
-    phpcs --standard=Drupal "$STAGED/$FILE" >>$LINTLOG 2>&1
+    phpcs --standard=Drupal "$FILE" >>$LINTLOG 2>&1
     if [ $? -ne 0 ]; then
       ERROR_FILES="$ERROR_FILES $FILE"
     fi

@@ -1,42 +1,66 @@
 <?php
 
+/**
+ * @file
+ * this will creatre aa from.
+ */
+
+/**
+ * From menu example.
+ */
 function form_example_menu() {
   $items = array();
 
-  $items['examples/form-example'] = array( //this creates a URL that will call this form at "examples/form-example"
-    'title' => 'Example Form', //page title
+  // This creates a URL that will call this form at "examples/form-example".
+  $items['examples/form-example'] = array(
+  // Page title.
+    'title' => 'Example Form',
     'description' => 'A form to mess around with.',
-    'page callback' => 'drupal_get_form', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
-    'page arguments' => array('form_example_form'), //put the name of the form here
-    'access callback' => TRUE
+  // This is the function that will be called when the
+  // page is accessed.  for a form, use drupal_get_form.
+    'page callback' => 'drupal_get_form',
+  // Put the name of the form here.
+    'page arguments' => array('form_example_form'),
+    'access callback' => TRUE,
   );
 
   return $items;
 }
 
+/**
+ * From example.
+ */
 function form_example_form($form, &$form_state) {
-  
- $form['price'] = array(
-    '#type' => 'textfield', //you can find a list of available types in the form api
+
+  $form['price'] = array(
+  // You can find a list of available types in the form api.
+    '#type' => 'textfield',
     '#title' => 'What is Your Price?',
     '#size' => 10,
     '#maxlength' => 10,
-    '#required' => TRUE, //make this field required 
+  // Make this field required.
+    '#required' => TRUE,
   );
 
   $form['submit_button'] = array(
     '#type' => 'submit',
     '#value' => t('Click Here!'),
   );
-  
+
   return $form;
 }
 
+/**
+ * From validate example.
+ */
 function form_example_form_validate($form, &$form_state) {
-  if (!($form_state['values']['price'] > 0)){
+  if (!($form_state['values']['price'] > 0)) {
     form_set_error('price', t('Price must be a positive number.'));
   }
 }
 
+/**
+ * Form submit example.
+ */
 function form_example_form_submit($form, &$form_state) {
 }

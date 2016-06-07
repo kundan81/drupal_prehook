@@ -88,7 +88,7 @@ do
     if [ $? -ne 0 ]; then
       ERROR_FILES="$ERROR_FILES $FILE"
     fi
-    rm -f "$STAGED/$FILE"
+    # rm -f "$STAGED/$FILE"
   fi
 done
 

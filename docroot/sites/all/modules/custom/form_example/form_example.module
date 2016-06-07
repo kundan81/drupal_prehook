@@ -2,11 +2,11 @@
 
 /**
  * @file
- * this will creatre aa from.
+ * This will creatre aa from.
  */
 
 /**
- * From menu example.
+ * This is example module.
  */
 function form_example_menu() {
   $items = array();

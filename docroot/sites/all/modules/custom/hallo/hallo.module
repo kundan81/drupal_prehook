@@ -1,65 +1,73 @@
 <?php
-  //print_r("haloo"); die();
-  function hallo_menu() {
-    $items = array();
-    $items['hallo'] = array(
-      'title' => t('My Form'),
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('hallo_form'),
-      'access arguments' => array('access content'),
-      'description' => t('This form calculate sum of two numbers'),
-      'type' => MENU_CALLBACK,
-    );
-    return $items;
-  }
+
+/**
+ * @file
+ * This is hallo.
+ */
 
   /**
-   * Returns the render array for the form.
+   * This is hallo module.
    */
-  function hallo_form($form, &$form_state) {
-    $form['calculate'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Some Calculations Based On Numbers'),
-      '#collapsible' => TRUE,
-      '#collapsed' => FALSE,
-    );
-    $form['calculate']['first'] = array(
-      '#type' => 'textfield',
-      '#title' => t('First Number'),
-      '#description' => "Please Enter Your First Number.",
-      '#size' => 20,
-      '#maxlength' => 20,
-    );
-    $form['calculate']['second'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Second Number'),
-      '#default_value' => 0,
-      '#description' => "For Calculating Factorial Put 0 HERE.",
-      '#size' => 20,
-      '#maxlength' => 20,
-    );
-    
-    $form['submit'] = array(
-      '#type' => 'submit',
-      '#value' => 'Submit',
-    );
-    return $form;    
-  }
+function hallo_menu() {
+  $items = array();
+  $items['hallo'] = array(
+    'title' => 'My Form',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('hallo_form'),
+    'access arguments' => array('access content'),
+    'description' => 'This form calculate sum of two numbers',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
 
-  /**
-   * Validates the form.
-   */
-  function hallo_form_validate($form, &$form_state) {
-    if (empty($form_state['values']['first']) && empty($form_state['values']['second'])) {
-      form_set_error('error', t('Enter Value First.'));
-    }
-  }
+/**
+ * Returns the render array for the form.
+ */
+function hallo_form($form, &$form_state) {
+  $form['calculate'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Some Calculations Based On Numbers'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['calculate']['first'] = array(
+    '#type' => 'textfield',
+    '#title' => 'First Number',
+    '#description' => "Please Enter Your First Number.",
+    '#size' => 20,
+    '#maxlength' => 20,
+  );
+  $form['calculate']['second'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Second Number',
+    '#default_value' => 0,
+    '#description' => "For Calculating Factorial Put 0 HERE.",
+    '#size' => 20,
+    '#maxlength' => 20,
+  );
 
-  /**
-   * Add a submit handler/function to the form.
-   *
-   * This will rebuild this form after successfull submission of form.
-   */
-  function hallo_form_submit($form, &$form_state) {
-    $form_state['rebuild'] = TRUE;
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+  return $form;
+}
+
+/**
+ * Validates the form.
+ */
+function hallo_form_validate($form, &$form_state) {
+  if (empty($form_state['values']['first']) && empty($form_state['values']['second'])) {
+    form_set_error('error', t('Enter Value First.'));
   }
+}
+
+/**
+ * Add a submit handler/function to the form.
+ *
+ * This will rebuild this form after successfull submission of form.
+ */
+function hallo_form_submit($form, &$form_state) {
+  $form_state['rebuild'] = TRUE;
+}

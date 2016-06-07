@@ -1,11 +1,13 @@
 No syntax errors detected in .validate_pre_commit/docroot/sites/all/modules/custom/form_example/form_example.module
+No syntax errors detected in .validate_pre_commit/docroot/sites/all/modules/custom/hallo/hallo.module
 
-FILE: ...ocroot/sites/all/modules/custom/form_example/form_example.module
+FILE: ...w/html/d7.lc/docroot/sites/all/modules/custom/hallo/hallo.module
 ----------------------------------------------------------------------
-FOUND 1 ERROR AFFECTING 1 LINE
+FOUND 2 ERRORS AFFECTING 2 LINES
 ----------------------------------------------------------------------
- 3 | ERROR | Missing short description in doc comment
+ 14 | ERROR | Do not use t() in hook_menu()
+ 18 | ERROR | Do not use t() in hook_menu()
 ----------------------------------------------------------------------
 
-Time: 42ms; Memory: 5.5Mb
+Time: 44ms; Memory: 5.75Mb
 
